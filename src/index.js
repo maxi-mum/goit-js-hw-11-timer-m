@@ -1,7 +1,6 @@
 import refs from './refs/timerRefs';
 // console.log(refs);
 import css from './css/style.css';
-
 class CountdownTimer {
   constructor({ selector, targetDate }) {
     this.selector = selector;
@@ -21,29 +20,26 @@ class CountdownTimer {
     refs.mins.textContent = `${mins}`;
     refs.seconds.textContent = `${seconds}`;
   }
-
   pad(value) {
     return String(value).padStart(2, '0');
   }
   timeFinish(time) {
     if (this.targetDate - Date.now() < 0) {
       clearInterval(this.setInt);
-      refs.selector.textContent = '"Time is out”';
+      refs.selector.textContent = '"Time is out"';
       refs.selector.style.textShadow =
         '0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px rebeccapurple';
       refs.selector.style.fontSize = '50px';
-      refs.selector.style.justifyContent = 'center';
+      refs.selector.justifyContent = 'center';
     }
   }
-
   setInt = setInterval(() => {
     this.updateClockface();
     this.timeFinish();
   }, 1000);
 }
-
 const timer = new CountdownTimer({
   selector: '#timer-1',
-  targetDate: new Date('Jan 25,23:59:59 2021'),
+  targetDate: new Date('Jan 01, 23:59:59 2021'),
 });
 timer.updateClockface();
