@@ -28,10 +28,11 @@ class CountdownTimer {
   timeFinish(time) {
     if (this.targetDate - Date.now() < 0) {
       clearInterval(this.setInt);
-      refs.timerRef.textContent = '"Time is out”';
-      refs.timerRef.style.textShadow =
+      refs.selector.textContent = '"Time is out”';
+      refs.selector.style.textShadow =
         '0 0 5px white, 0 0 10px white, 0 0 15px white, 0 0 20px rebeccapurple';
-      refs.timerRef.style.fontSize = '50px';
+      refs.selector.style.fontSize = '50px';
+      refs.selector.style.justifyContent = 'center';
     }
   }
 
@@ -43,6 +44,6 @@ class CountdownTimer {
 
 const timer = new CountdownTimer({
   selector: '#timer-1',
-  targetDate: new Date('Jan 01, 00:00:00 2021'),
+  targetDate: new Date('Jan 25,23:59:59 2021'),
 });
 timer.updateClockface();
